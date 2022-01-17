@@ -1,6 +1,5 @@
 {
-  "optimize_pipeline_config":
-  {
+  "optimize_pipeline_config": {
     "remove_dropout": true,
     "separate_conv_act": true,
     "fold_conv_bn": true,
@@ -14,9 +13,7 @@
     "weight_threshold": 0.1,
     "train_with_bn": false
   },
-
-  "quantize_pipeline_config":
-  {
+  "quantize_pipeline_config": {
     "replace_sigmoid": true,
     "replace_hard_sigmoid": true,
     "replace_average_pooling2d": true,
@@ -29,329 +26,502 @@
     "include_bias_corr": false,
     "freeze_bn_delay": -1
   },
-
-  "quantize_registry_config":
-  {
+  "quantize_registry_config": {
     "input_bit": -1,
     "weight_bit": -1,
     "activation_bit": -1,
-    "input_quantize_config":
-    {
+    "input_quantize_config": {
       "input_layers": [],
-      "input_quantizer":
-      {
+      "input_quantizer": {
         "quantizer_type": "LastValueQuantPosQuantizer",
-        "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 1}
+        "quantizer_params": {
+          "bit_width": 8,
+          "method": 0,
+          "round_mode": 1
+        }
       }
     },
-
-    "layer_quantize_config":
-    [
+    "layer_quantize_config": [
       {
         "layer_type": "tensorflow.keras.layers.Conv2D",
-        "quantizable_weights": ["kernel", "bias"],
+        "quantizable_weights": [
+          "kernel",
+          "bias"
+        ],
         "weight_quantizers": [
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 0}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 0
+            }
           },
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 0}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 0
+            }
           }
         ],
-        "quantizable_activations": ["activation"],
+        "quantizable_activations": [
+          "activation"
+        ],
         "activation_quantizers": [
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 1}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 1
+            }
           }
         ]
       },
-
       {
         "layer_type": "tensorflow.keras.layers.DepthwiseConv2D",
-        "quantizable_weights": ["depthwise_kernel", "bias"],
+        "quantizable_weights": [
+          "depthwise_kernel",
+          "bias"
+        ],
         "weight_quantizers": [
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 0}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 0
+            }
           },
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 0}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 0
+            }
           }
         ],
-        "quantizable_activations": ["activation"],
+        "quantizable_activations": [
+          "activation"
+        ],
         "activation_quantizers": [
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 1}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 1
+            }
           }
         ]
       },
-
       {
         "layer_type": "tensorflow.keras.layers.Conv2DTranspose",
-        "quantizable_weights": ["kernel", "bias"],
+        "quantizable_weights": [
+          "kernel",
+          "bias"
+        ],
         "weight_quantizers": [
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 0}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 0
+            }
           },
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 0}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 0
+            }
           }
         ],
-        "quantizable_activations": ["activation"],
+        "quantizable_activations": [
+          "activation"
+        ],
         "activation_quantizers": [
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 1}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 1
+            }
           }
         ]
       },
-      
       {
         "layer_type": "tensorflow.keras.layers.Dense",
-        "quantizable_weights": ["kernel", "bias"],
+        "quantizable_weights": [
+          "kernel",
+          "bias"
+        ],
         "weight_quantizers": [
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 0}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 0
+            }
           },
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 0}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 0
+            }
           }
         ],
-        "quantizable_activations": ["activation"],
+        "quantizable_activations": [
+          "activation"
+        ],
         "activation_quantizers": [
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 1}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 1
+            }
           }
         ]
       },
-
       {
         "layer_type": "tensorflow.keras.layers.Activation",
-        "quantizable_activations": ["activation"],
+        "quantizable_activations": [
+          "activation"
+        ],
         "activation_quantizers": [
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 1}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 1
+            }
           }
         ]
       },
-
       {
         "layer_type": "tensorflow.keras.layers.ReLU",
-        "quantizable_outputs": [0],
+        "quantizable_outputs": [
+          0
+        ],
         "output_quantizers": [
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 1}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 1
+            }
           }
         ]
       },
-
       {
         "layer_type": "tensorflow.keras.layers.LeakyReLU",
-        "quantizable_outputs": [0],
+        "quantizable_outputs": [
+          0
+        ],
         "output_quantizers": [
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 1}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 1
+            }
           }
         ]
       },
-
       {
         "layer_type": "tensorflow.keras.layers.Add",
-        "quantizable_outputs": [0],
+        "quantizable_outputs": [
+          0
+        ],
         "output_quantizers": [
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 1}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 1
+            }
           }
         ]
       },
-
       {
         "layer_type": "tensorflow.keras.layers.BatchNormalization",
-        "quantizable_weights": ["gamma", "beta"],
+        "quantizable_weights": [
+          "gamma",
+          "beta"
+        ],
         "weight_quantizers": [
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 0}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 0
+            }
           },
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 0}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 0
+            }
           }
         ],
-        "quantizable_outputs": [0],
+        "quantizable_outputs": [
+          0
+        ],
         "output_quantizers": [
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 1}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 1
+            }
           }
         ]
       },
-
       {
         "layer_type": "tensorflow.keras.layers.MaxPooling2D",
-        "quantizable_outputs": [0],
+        "quantizable_outputs": [
+          0
+        ],
         "output_quantizers": [
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 1}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 1
+            }
           }
         ]
       },
-
       {
         "layer_type": "tensorflow.keras.layers.AveragePooling2D",
-        "quantizable_outputs": [0],
+        "quantizable_outputs": [
+          0
+        ],
         "output_quantizers": [
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 1}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 1
+            }
           }
         ]
       },
-
       {
         "layer_type": "tensorflow.keras.layers.GlobalAveragePooling2D",
-        "quantizable_outputs": [0],
+        "quantizable_outputs": [
+          0
+        ],
         "output_quantizers": [
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 1}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 1
+            }
           }
         ]
       },
-
       {
         "layer_type": "tensorflow.keras.layers.UpSampling2D",
-        "quantizable_outputs": [0],
+        "quantizable_outputs": [
+          0
+        ],
         "output_quantizers": [
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 1}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 1
+            }
           }
         ]
       },
-
       {
         "layer_type": "tensorflow.keras.layers.Concatenate",
-        "quantizable_outputs": [0],
+        "quantizable_outputs": [
+          0
+        ],
         "output_quantizers": [
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 1}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 1
+            }
           }
         ]
       },
-
       {
         "layer_type": "tensorflow.keras.layers.ZeroPadding2D"
       },
-
       {
         "layer_type": "tensorflow.keras.layers.Reshape"
       },
-      
       {
         "layer_type": "tensorflow.keras.layers.Flatten"
       },
-
       {
         "layer_type": "tensorflow.keras.layers.Multiply",
-        "quantizable_outputs": [0],
+        "quantizable_outputs": [
+          0
+        ],
         "output_quantizers": [
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 1}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 1
+            }
           }
         ]
       },
-
       {
-        "layer_type": "tensorflow_model_optimization.python.core.quantization.keras.vitis.layers.vitis_pooling.VitisGlobalAveragePooling2D",
-        "quantizable_outputs": [0],
+        "layer_type": "vitis_quantizer.layers.vitis_pooling.VitisGlobalAveragePooling2D",
+        "quantizable_outputs": [
+          0
+        ],
         "output_quantizers": [
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 1}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 1
+            }
           }
         ]
       },
-
       {
-        "layer_type": "tensorflow_model_optimization.python.core.quantization.keras.vitis.layers.vitis_pooling.VitisAveragePooling2D",
-        "quantizable_outputs": [0],
+        "layer_type": "vitis_quantizer.layers.vitis_pooling.VitisAveragePooling2D",
+        "quantizable_outputs": [
+          0
+        ],
         "output_quantizers": [
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 1}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 1
+            }
           }
         ]
       },
-
       {
-        "layer_type": "tensorflow_model_optimization.python.core.quantization.keras.vitis.layers.vitis_activation.VitisSigmoid",
-        "quantizable_outputs": [0],
+        "layer_type": "vitis_quantizer.layers.vitis_activation.VitisSigmoid",
+        "quantizable_outputs": [
+          0
+        ],
         "output_quantizers": [
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 1}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 1
+            }
           }
         ]
       },
-
       {
-        "layer_type": "tensorflow_model_optimization.python.core.quantization.keras.vitis.layers.vitis_conv_bn.VitisConvBN",
-        "quantizable_weights": ["kernel", "bias"],
+        "layer_type": "vitis_quantizer.layers.vitis_conv_bn.VitisConvBN",
+        "quantizable_weights": [
+          "kernel",
+          "bias"
+        ],
         "weight_quantizers": [
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 0}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 0
+            }
           },
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 0}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 0
+            }
           }
         ],
-        "quantizable_activations": ["activation"],
+        "quantizable_activations": [
+          "activation"
+        ],
         "activation_quantizers": [
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 1}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 1
+            }
           }
         ]
       },
-
       {
-        "layer_type": "tensorflow_model_optimization.python.core.quantization.keras.vitis.layers.vitis_conv_bn.VitisDepthwiseConvBN",
-        "quantizable_weights": ["depthwise_kernel", "bias"],
+        "layer_type": "vitis_quantizer.layers.vitis_conv_bn.VitisDepthwiseConvBN",
+        "quantizable_weights": [
+          "depthwise_kernel",
+          "bias"
+        ],
         "weight_quantizers": [
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 0}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 0
+            }
           },
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 0}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 0
+            }
           }
         ],
-        "quantizable_activations": ["activation"],
+        "quantizable_activations": [
+          "activation"
+        ],
         "activation_quantizers": [
           {
             "quantizer_type": "LastValueLogThQuantizer",
-            "quantizer_params": {"bit_width": 8, "method": 0, "round_mode": 1}
+            "quantizer_params": {
+              "bit_width": 8,
+              "method": 0,
+              "round_mode": 1
+            }
           }
         ]
       }

@@ -4,10 +4,17 @@ package(default_visibility = [
     "//vitis_quantizer:__subpackages__",
 ])
 
+exports_files([
+    "vitis_8bit_fs_quantize_strategy.json",
+])
+
 py_library(
     name = "vitis_8bit_fs_quantize_strategy",
     srcs = [
         "vitis_8bit_fs_quantize_strategy.py",
+    ],
+    data = [
+        ":vitis_8bit_fs_quantize_strategy.json",
     ],
     deps = [
         requirement("tensorflow"),

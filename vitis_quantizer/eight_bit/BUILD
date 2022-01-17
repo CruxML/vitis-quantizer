@@ -14,6 +14,9 @@ py_library(
     srcs = [
         "vitis_8bit_quantize_strategy.py",
     ],
+    data = [
+        ":vitis_8bit_quantize_strategy.json",
+    ],
     deps = [
         ":vitis_8bit_transforms_pipeline",
         "//vitis_quantizer/common:vitis_quantize_registry",
@@ -46,6 +49,9 @@ py_library(
     name = "vitis_8bit_tqt_quantize_strategy",
     srcs = [
         "vitis_8bit_tqt_quantize_strategy.py",
+    ],
+    data = [
+        ":vitis_8bit_tqt_quantize_strategy.json",
     ],
     deps = [
         ":vitis_8bit_quantize_strategy",

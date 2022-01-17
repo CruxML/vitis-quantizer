@@ -5,6 +5,7 @@ py_library(
     srcs = [
         "vitis_quantize.py",
     ],
+    visibility = ["//visibility:public"],
     deps = [
         ":vitis_quantize_strategies",
         "//vitis_quantizer/base:quantize_annotate",

@@ -22,22 +22,22 @@ import tensorflow as tf
 import numpy as np
 
 from vitis_quantizer.base import quantize_annotate as quantize_annotate_mod
-from vitis_quantize.base import quantize_config as quantize_config_mod
-from vitis_quantize.common import vitis_quantize_aware_activation
-from vitis_quantize.common import vitis_quantize_wrapper
-from vitis_quantize.common import vitis_quantize_registry
-from vitis_quantize.common import vitis_quantizers
-from vitis_quantize.common import vitis_quantize_configs
-from vitis_quantize.optimizations import vitis_fast_finetune
-from vitis_quantize.optimizations import vitis_bias_correction
-from vitis_quantize.layers import vitis_quantize as vitis_quantize_layer
-from vitis_quantize.layers import vitis_activation
-from vitis_quantize.layers import vitis_pooling
-from vitis_quantize.eight_bit import vitis_8bit_quantize_strategy
-from vitis_quantize.eight_bit_fs import vitis_8bit_fs_quantize_strategy
-from vitis_quantize.utils import common_utils
-from vitis_quantize.utils import model_utils
-from vitis_quantize import vitis_quantize_strategies
+from vitis_quantizer.base import quantize_config as quantize_config_mod
+from vitis_quantizer.common import vitis_quantize_aware_activation
+from vitis_quantizer.common import vitis_quantize_wrapper
+from vitis_quantizer.common import vitis_quantize_registry
+from vitis_quantizer.common import vitis_quantizers
+from vitis_quantizer.common import vitis_quantize_configs
+from vitis_quantizer.optimizations import vitis_fast_finetune
+from vitis_quantizer.optimizations import vitis_bias_correction
+from vitis_quantizer.layers import vitis_quantize as vitis_quantize_layer
+from vitis_quantizer.layers import vitis_activation
+from vitis_quantizer.layers import vitis_pooling
+from vitis_quantizer.eight_bit import vitis_8bit_quantize_strategy
+from vitis_quantizer.eight_bit_fs import vitis_8bit_fs_quantize_strategy
+from vitis_quantizer.utils import common_utils
+from vitis_quantizer.utils import model_utils
+from vitis_quantizer import vitis_quantize_strategies
 
 logger = common_utils.VAILogger
 keras = tf.keras
