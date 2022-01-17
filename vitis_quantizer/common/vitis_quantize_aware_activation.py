@@ -21,7 +21,7 @@ from __future__ import print_function
 import tensorflow as tf
 
 # TODO(b/139939526): move to public API.
-from tensorflow.python.keras.utils import tf_utils
+from tensorflow.python.framework.smart_cond import smart_cond
 from tensorflow.python.keras.utils.generic_utils import register_keras_serializable
 from vitis_quantizer.utils import common_utils
 
@@ -210,7 +210,7 @@ class QuantizeAwareActivation(object):
 
         x = inputs
         if self._should_pre_quantize():
-            x = tf_utils.smart_cond(
+            x = smart_cond(
                 self._training,
                 make_quantizer_fn(
                     self.quantizer, x, True, self.mode, self._pre_activation_vars
@@ -223,7 +223,7 @@ class QuantizeAwareActivation(object):
         x = self.activation(x, *args, **kwargs)
 
         if self._should_post_quantize():
-            x = tf_utils.smart_cond(
+            x = smart_cond(
                 self._training,
                 make_quantizer_fn(
                     self.quantizer, x, True, self.mode, self._post_activation_vars

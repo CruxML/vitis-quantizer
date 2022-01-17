@@ -16,7 +16,7 @@
 
 import tensorflow as tf
 
-from tensorflow.python.keras.utils import tf_utils
+from tensorflow.python.framework.smart_cond import smart_cond
 from tensorflow.python.keras.utils.generic_utils import register_keras_serializable
 from vitis_quantizer.base import quantizer as quantizer_mod
 from vitis_quantizer.utils import common_utils
@@ -78,9 +78,7 @@ class VitisQuantize(tf.keras.layers.Layer):
 
             return quantizer_fn
 
-        return tf_utils.smart_cond(
-            training, _make_quantizer_fn(True), _make_quantizer_fn(False)
-        )
+        return smart_cond(training, _make_quantizer_fn(True), _make_quantizer_fn(False))
 
     def get_config(self):
         base_config = super(VitisQuantize, self).get_config()

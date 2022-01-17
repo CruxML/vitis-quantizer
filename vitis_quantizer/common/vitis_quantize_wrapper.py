@@ -29,7 +29,7 @@ from __future__ import print_function
 import tensorflow as tf
 
 # TODO(b/139939526): move to public API.
-from tensorflow.python.keras.utils import tf_utils
+from tensorflow.python.framework.smart_cond import smart_cond
 from tensorflow.python.util import tf_inspect
 from tensorflow.python.keras.utils.generic_utils import register_keras_serializable
 from vitis_quantizer.common import vitis_quantize_aware_activation
@@ -222,7 +222,7 @@ class QuantizeWrapper(tf.keras.layers.Wrapper):
         # Quantize all weights, and replace them in the underlying layer.
         quantized_weights = []
         for unquantized_weight, quantizer, quantizer_vars in self._weight_vars:
-            quantized_weight = tf_utils.smart_cond(
+            quantized_weight = smart_cond(
                 training,
                 self._make_quantizer_fn(
                     quantizer, unquantized_weight, True, self.mode, quantizer_vars
@@ -262,7 +262,7 @@ class QuantizeWrapper(tf.keras.layers.Wrapper):
                 output_quantizer,
                 output_quantizer_vars,
             ) in self._output_quantizer_vars:
-                quantized_outputs[output_id] = tf_utils.smart_cond(
+                quantized_outputs[output_id] = smart_cond(
                     training,
                     self._make_quantizer_fn(
                         output_quantizer,
@@ -287,7 +287,7 @@ class QuantizeWrapper(tf.keras.layers.Wrapper):
             output_quantizer,
             output_quantizer_vars,
         ) = self._output_quantizer_vars[0]
-        return tf_utils.smart_cond(
+        return smart_cond(
             training,
             self._make_quantizer_fn(
                 output_quantizer, outputs, True, self.mode, output_quantizer_vars

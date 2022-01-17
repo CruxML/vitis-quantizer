@@ -11,14 +11,28 @@ Working in the docker image is annoying and this code should be standalone.
 
 ## Install
 
-```
+Build from source:
+
+```bash
 python3 setup.py bdist_wheel
 pip install dist/vitis_quantizer-0.1.0-py3-none-any.whl
 ```
 
 ## Usage
 
-TODO
+Usage is the same as Vitis AI models.
 
+```python
+import tensorflow as tf
+import vitis_quantizer
 
+# Train/Get/Make a keras model somehow
+model = tf.keras.models.load_model("/path/to/keras/model")
+quantizer = vitis_quantizer.VitisQuantizer(model)
+with vitis_quantizer.quantize_scope():
+    quantized_model = quantizer.quantize_model(calib_dataset=dataset)
+    quantized_model.save("/path/to/save/quantized/model")
+```
+
+After you have the quantized model saved, use vitis compile.sh script.
 

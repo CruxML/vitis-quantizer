@@ -14,3 +14,4 @@
 # ==============================================================================
 
 from vitis_quantizer.vitis_quantize import VitisQuantizer
+from vitis_quantizer.vitis_quantize import quantize_scope
