@@ -11,6 +11,10 @@ Working in the docker image is annoying and this code should be standalone.
 
 ## Install
 
+```bash
+pip install vitis-quantizer
+```
+
 Build from source:
 
 ```bash
