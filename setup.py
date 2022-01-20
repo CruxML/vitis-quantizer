@@ -1,11 +1,11 @@
 from setuptools import setup, find_packages
 
-VERSION = "0.1.2"
+VERSION = "0.1.3"
 DESCRIPTION = "A standalone package to do the vitis quantization step."
 
 REQUIRED_PACKAGES = [
     "tensorflow>=2.7.0",
-    "numpy>=1.22.1",
+    "numpy<1.23.0,>=1.16.5",
     "tensorflow-model-optimization>=0.7.0",
 ]
 
